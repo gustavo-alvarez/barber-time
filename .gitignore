@@ -4,7 +4,9 @@
 
 # Fotos que sube el negocio/clientes: son DATOS, no código
 # y son privadas. Viven solo en el servidor (se migran aparte).
-assets/uploads/
+# PERO el .htaccess de seguridad sí viaja (bloquea PHP dentro de las fotos).
+assets/uploads/*
+!assets/uploads/.htaccess
 
 # Credenciales reales de la base de datos.
 # Cada ambiente (XAMPP local / cPanel) usa las suyas.

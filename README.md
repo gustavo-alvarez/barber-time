@@ -1,5 +1,8 @@
 # 💈 Barber-Time
 
+> ✅ **Proyecto versionado en GitHub** desde el 07/11/2026 (`gustavo-alvarez/barber-time`, repo privado).
+> Historial de cambios: esta es la "foto 1" del proyecto completo con ciclo de vida de citas (Ausente + Deshacer incluido).
+
 Agendador de citas para barberías: **reserva web para clientes + agenda para el equipo**, con avisos por WhatsApp, ciclo de vida de cada cita y estadísticas del negocio.
 
 > Pensado para correr primero en **XAMPP (Windows)** y luego migrar a **cPanel** (PHP 8.x + MariaDB). Todo en PHP plano, sin frameworks.

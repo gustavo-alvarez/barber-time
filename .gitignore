@@ -1,0 +1,19 @@
+# ============================================
+# Barber-Time · qué NO viaja al repositorio
+# ============================================
+
+# Fotos que sube el negocio/clientes: son DATOS, no código
+# y son privadas. Viven solo en el servidor (se migran aparte).
+assets/uploads/
+
+# Credenciales reales de la base de datos.
+# Cada ambiente (XAMPP local / cPanel) usa las suyas.
+# Al instalar desde el repo, copiar database.example.php
+# a database.php y rellenar los datos.
+config/database.php
+
+# Basura del sistema operativo / editores
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log

@@ -1,0 +1,419 @@
+/* ==================================================
+   BARBER-TIME — Estilos Mobile-first
+   Diseñamos primero para el teléfono (min-width no va primero)
+   ================================================== */
+
+:root {
+    --fondo: #111;           /* fondo oscuro general */
+    --panel: #1c1c1c;        /* tarjetas */
+    --borde: #333;
+    --texto: #eee;
+    --texto-suave: #999;
+    --dorado: #d4a24a;       /* acento barbería */
+    --verde: #4ade80;
+    --rojo: #f87171;
+    --radio: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    /* Lo importante en móvil: que el texto se lea sin hacer zoom */
+    font-size: 16px;   /* iOS hace zoom si un input tiene menos de 16px */
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 480px;   /* los contenidos se sienten "de app" */
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.tarjeta {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    padding: 1.25rem;
+}
+
+h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+h2 { font-size: 1.15rem; }
+a { color: var(--dorado); text-decoration: none; }
+hr { border: none; border-top: 1px solid var(--borde); margin: 1rem 0; }
+
+/* ---------- Formularios: champs grandes, fáciles de tocar ---------- */
+.campo { margin-bottom: 1rem; }
+.campo label { display: block; font-size: .85rem; color: var(--texto-suave); margin-bottom: .3rem; }
+
+input, select, textarea {
+    width: 100%;
+    padding: .8rem .9rem;
+    font-size: 16px;          /* evita el zoom automático de iOS */
+    background: #0d0d0d;
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+}
+input:focus, select:focus { outline: 2px solid var(--dorado); }
+
+/* ---------- Botones: mínimo 48px de alto (área del dedo) ---------- */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    background: var(--dorado);
+    color: #111;
+    text-align: center;
+    cursor: pointer;
+}
+.btn:active { transform: scale(.98); }
+.btn-sec { background: var(--panel); color: var(--texto); border: 1px solid var(--borde); }
+.btn-rojo { background: var(--rojo); color: #111; }
+
+/* ---------- Mensajes ---------- */
+.alerta { padding: .8rem 1rem; border-radius: 8px; margin-bottom: 1rem; font-size: .9rem; }
+.alerta-ok  { background: rgba(74,222,128,.12);  color: var(--verde); border: 1px solid rgba(74,222,128,.4); }
+.alerta-mal { background: rgba(248,113,113,.12); color: var(--rojo);  border: 1px solid rgba(248,113,113,.4); }
+
+.texto-suave { color: var(--texto-suave); font-size: .85rem; }
+.centro { text-align: center; }
+
+/* ---------- Barra inferior tipo app (móvil) ---------- */
+.barra-inferior {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    background: var(--panel);
+    border-top: 1px solid var(--borde);
+    /* El contenido no debe quedar tapado por la barra en iPhone */
+    padding-bottom: env(safe-area-inset-bottom);
+}
+.barra-inferior a {
+    flex: 1;
+    padding: .65rem 0 calc(.65rem + env(safe-area-inset-bottom));
+    text-align: center;
+    font-size: .7rem;
+    color: var(--texto-suave);
+}
+.barra-inferior a.activo { color: var(--dorado); font-weight: 700; }
+.barra-inferior .icono { display: block; font-size: 1.18rem; }
+.avatar-foto { width: 3.2rem; height: 3.2rem; border-radius: 50%; object-fit: cover; }
+.barbero .avatar { width: 3.2rem; height: 3.2rem; }
+.avatar-mini {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: -0.3rem;
+    margin-right: .3rem;
+    background: #0d0d0d;
+    border: 1px solid var(--borde);
+    font-size: .8rem;
+    overflow: hidden;
+}
+
+/* ---------- Página de inicio (catálogo) ---------- */
+.hero { text-align: center; }
+.hero h1 { font-size: 2rem; }
+.hero p { color: var(--texto-suave); }
+
+.seccion {
+    margin: 1.5rem 0 .75rem;
+    font-size: 1.1rem;
+    color: var(--dorado);
+}
+
+/* Tarjeta de servicio: nombre a la izquierda, precio + botón a la derecha */
+.servicio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .6rem;
+}
+.servicio .lado {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .4rem;
+    flex-shrink: 0;
+}
+.precio { color: var(--dorado); font-weight: 700; font-size: 1.1rem; }
+
+/* Botón compacto para usar dentro de tarjetas (sin ocupar todo el ancho) */
+.btn-inline {
+    display: inline-block;
+    width: auto;
+    padding: .5rem 1rem;
+    font-size: .85rem;
+}
+
+/* ---------- Agendamiento de citas (Etapa 4) ---------- */
+.miga {
+    display: inline-block;
+    padding: .3rem .7rem;
+    background: #0d0d0d;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    font-size: .75rem;
+    color: var(--texto-suave);
+    margin: 0 .35rem .5rem 0;
+}
+.miga-activa { color: var(--dorado); border-color: var(--dorado); font-weight: 700; }
+
+/* Tarjeta de cita en el panel */
+.cita {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .75rem;
+    margin-bottom: .6rem;
+}
+
+/* Etiquetas de estado */
+.pill {
+    font-size: .72rem;
+    padding: .3rem .6rem;
+    border-radius: 999px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.pill-pendiente  { background: rgba(212,162,74,.15);  color: var(--dorado); }
+.pill-confirmada { background: rgba(74,222,128,.12);  color: var(--verde); }
+.pill-completada { background: rgba(255,255,255,.08); color: var(--texto-suave); }
+.pill-cancelada  { background: rgba(248,113,113,.12); color: var(--rojo); }
+
+.pill-ausente    { background: rgba(167,139,250,.14); color: #c4b5fd; } /* morado suave: cliente no asistió */
+
+.pill-ok  { background: rgba(74,222,128,.12);  color: var(--verde); }   /* cliente activo */
+.pill-mal { background: rgba(248,113,113,.12); color: var(--rojo); }    /* cliente inactivo */
+
+/* Rejilla de horas: botones grandes para el dedo */
+.horarios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    margin: .5rem 0 1rem;
+}
+.slot {
+    padding: .75rem .3rem;
+    font-size: .95rem;
+    background: #0d0d0d;
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    cursor: pointer;
+}
+.slot:active { border-color: var(--dorado); color: var(--dorado); }
+
+/* ---------- Panel de administrador (Etapa 6A) ---------- */
+.nav-fecha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    margin: .75rem 0;
+}
+.resumen {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    margin: .75rem 0;
+}
+.resumen div {
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: .6rem .3rem;
+    text-align: center;
+    font-size: .8rem;
+}
+.fila-btn {
+    display: flex;
+    gap: .4rem;
+    margin: -.3rem 0 .8rem;
+}
+
+/* ---------- Editor del catálogo (Etapa 6B) ---------- */
+.editor {
+    background: #0d0d0d;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: .9rem;
+    margin-bottom: 1rem;
+}
+.editor-apagado { opacity: .55; }
+.editor .fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+}
+.editor .mini { display: block; font-size: .75rem; color: var(--texto-suave); margin-bottom: .25rem; }
+.chk {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin: .6rem 0;
+    font-size: .9rem;
+    color: var(--texto-suave);
+}
+.chk input { width: auto; } /* la casilla no ocupa todo el ancho */
+
+/* ---------- Marca y logo (Mejora A) ---------- */
+.marca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+}
+.logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--dorado);
+    flex-shrink: 0;
+    background: #0d0d0d;
+}
+.logo-grande { width: 96px; height: 96px; }
+.contacto-pie { margin: 1rem 0 0; font-size: .9rem; }
+
+/* ---------- Editor de horarios ---------- */
+/* Línea 1: día + casillas · Línea 2: horas alineadas bajo el día */
+.fila-horario {
+    display: flex;
+    align-items: center;
+    gap: .55rem;
+    margin-bottom: .25rem;
+}
+.fila-horario.horas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .4rem;
+    margin: 0 0 .6rem;
+    padding-left: 3rem;      /* entra debajo de las horas, después del día */
+}
+.dia { width: 2.5rem; font-size: .85rem; color: var(--texto-suave); font-weight: 700; flex-shrink: 0; }
+.chk-mini {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    font-size: .75rem;
+    color: var(--texto-suave);
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    padding: .3rem .55rem;
+}
+.chk-mini input { width: auto; margin: 0; }
+input[type="time"] { padding: .45rem .5rem; font-size: .95rem; }
+.editor-detalles { background: #0d0d0d; border: 1px solid var(--borde); border-radius: 10px; padding: .9rem; margin-bottom: 1rem; }
+.editor-detalles summary { cursor: pointer; font-weight: 700; margin-bottom: .6rem; }
+
+/* ---------- Menú administrativo (panel del admin) ---------- */
+.menu-admin summary {
+    background: var(--dorado);
+    color: #111;
+    padding: .85rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    list-style: none;          /* quita la flechita fea en Chrome */
+    cursor: pointer;
+    margin: .5rem 0;
+}
+.menu-admin summary::-webkit-details-marker { display: none; }
+.menu-panel { display: grid; gap: .5rem; margin-top: .6rem; }
+.menu-panel a {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    background: var(--panel);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: .9rem 1rem;
+    font-weight: 600;
+    font-size: .95rem;
+}
+.menu-panel .ico { font-size: 1.3rem; flex-shrink: 0; }
+.menu-panel small { color: var(--texto-suave); font-weight: 400; flex: 1; text-align: right; }
+
+/* ---------- Estadísticas ---------- */
+.grafica {
+    display: flex;
+    align-items: stretch;
+    gap: .5rem;
+    height: 10rem;
+    margin: .8rem 0 .3rem;
+}
+.grafica .gcol {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .25rem;
+}
+.grafica .gbar {
+    width: 100%;
+    background: var(--dorado);
+    border-radius: 6px 6px 0 0;
+    min-height: 3px;
+}
+.grafica .gmes { font-size: .78rem; color: var(--texto-suave); }
+.grafica .gval { font-size: .6rem; color: var(--texto-suave); white-space: nowrap; }
+.top-num {
+    color: var(--dorado);
+    font-size: .8rem;
+    margin-right: .25rem;
+}
+
+/* ---------- Barra de recordatorio (cita cercana) ---------- */
+.aviso-cita {
+    display: flex;
+    flex-direction: column;
+    background: var(--dorado);
+    color: #111;
+    border-radius: 10px;
+    padding: .7rem .9rem;
+    margin: .6rem 0 1rem;
+    font-size: .92rem;
+    line-height: 1.35;
+}
+.aviso-cita .mini {
+    font-weight: 400;
+    font-size: .8rem;
+    opacity: .85;
+}
+
+/* Tarjeta de barbero: avatar circular a la izquierda */
+.barbero {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    margin-bottom: .6rem;
+}
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #0d0d0d;
+    border: 1px solid var(--borde);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
